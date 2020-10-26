@@ -1,0 +1,21 @@
+Package: sedapRmd
+Title: RMarkdown Template of Research Project for SEDAP
+Version: 1.0.0.0
+Authors@R: 
+    person(given = "Fernando",
+           family = "Souza",
+           role = c("aut", "cre"),
+           email = "fcs.est@gmail.com")
+Description: A package with an RMarkdown template to create an abnTeX2 research project for the SEDAP protected data access room.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+    magrittr,
+    purrr,
+    rmarkdown,
+    stringr
+Suggest:
+    tinytex

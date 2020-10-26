@@ -1,0 +1,148 @@
+---
+titulo: "TÍTULO"
+subtitulo: "SUBTÍTULO"
+autor: "AUTOR"
+local: "CIDADE"
+data: "?? de MÊS de 20??"
+preambulo: "PRÉAMBULO"
+resumo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempus feugiat risus, eu rutrum purus convallis sit amet. Mauris ornare turpis metus, non laoreet leo congue nec. Fusce faucibus purus nisl, in congue massa tincidunt id. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a condimentum nisi. Donec at molestie nisl. Quisque ultricies dolor vel orci viverra sagittis. In euismod tempus nunc, ut vulputate sapien rutrum vitae."
+palavras-chave: "word1, word2, word3, word4"
+lista-abreviaturas-e-siglas: 
+  ABREVIATURA1: Abreviatura 1
+  ABREVIATURA2: Abreviatura 2
+  ABREVIATURA3: Abreviatura 3
+  SIGLA1: Sigla 1
+  SIGLA2: Sigla 2
+  SIGLA3: Sigla 3 
+output: 
+  pdf_document:
+    template: arquivos_tex/abnTeX2_template.tex
+---
+
+<!----------------------------------------------------------------------->
+<!----------------------------Apresentação------------------------------->
+<!----------------------------------------------------------------------->
+
+\chapter*{Apresentação}
+\addcontentsline{toc}{chapter}{APRESENTAÇÃO}
+
+```{r child="capitulos/apresentacao.Rmd"}
+```
+
+<!----------------------------------------------------------------------->
+
+
+
+<!----------------------------------------------------------------------->
+<!----------------------------Capítulo 1--------------------------------->
+<!----------------------------------------------------------------------->
+
+\chapter{Problema de pesquisa}
+
+```{r child="capitulos/1_problema_de_pesquisa.Rmd"}
+```
+
+<!----------------------------------------------------------------------->
+
+
+
+<!----------------------------------------------------------------------->
+<!----------------------------Capítulo 2--------------------------------->
+<!----------------------------------------------------------------------->
+
+\chapter{Hipóteses da pesquisa}
+```{r child="capitulos/2_hipoteses_da_pesquisa.Rmd"}
+```
+
+<!----------------------------------------------------------------------->
+
+
+
+<!----------------------------------------------------------------------->
+<!----------------------------Capítulo 3--------------------------------->
+<!----------------------------------------------------------------------->
+
+\chapter{Objetivos da pesquisa}
+
+```{r child="capitulos/3_objetivos_da_pesquisa.Rmd"}
+```
+
+<!----------------------------------------------------------------------->
+
+
+
+<!----------------------------------------------------------------------->
+<!----------------------------Capítulo 4--------------------------------->
+<!----------------------------------------------------------------------->
+
+\chapter{Fundamentação técnica e científica para uso dos dados protegidos do Inep}
+
+```{r child="capitulos/4_fundamentacao.Rmd"}
+```
+
+<!----------------------------------------------------------------------->
+
+
+
+<!----------------------------------------------------------------------->
+<!----------------------------Capítulo 5--------------------------------->
+<!----------------------------------------------------------------------->
+
+\chapter{Procedimentos Metodológicos}
+
+```{r child="capitulos/5_metodologia.Rmd"}
+```
+
+<!----------------------------------------------------------------------->
+
+
+
+<!----------------------------------------------------------------------->
+<!----------------------------Capítulo 6--------------------------------->
+<!----------------------------------------------------------------------->
+
+\chapter{Bases de dados do Inep a serem utilizadas}
+
+```{r child="capitulos/6_bases_utilizadas.Rmd"}
+```
+
+<!----------------------------------------------------------------------->
+
+
+
+<!----------------------------------------------------------------------->
+<!----------------------------Capítulo 7--------------------------------->
+<!----------------------------------------------------------------------->
+
+\chapter{Resultados esperados para extração da Sala Segura}
+
+```{r child="capitulos/7_resultados_esperados.Rmd"}
+```
+
+<!----------------------------------------------------------------------->
+
+
+
+<!----------------------------------------------------------------------->
+<!----------------------------Capítulo 8--------------------------------->
+<!----------------------------------------------------------------------->
+
+\chapter{Previsão de início e de conclusão da pesquisa no Sedap}
+
+```{r child="capitulos/8_cronograma.Rmd"}
+```
+
+<!----------------------------------------------------------------------->
+
+
+
+<!----------------------------------------------------------------------->
+<!----------------------------Capítulo 9--------------------------------->
+<!----------------------------------------------------------------------->
+
+\chapter{Previsão de conclusão da pesquisa na instituição de vínculo}
+
+```{r child="capitulos/9_conclusao_pesquisa.Rmd"}
+```
+
+<!----------------------------------------------------------------------->

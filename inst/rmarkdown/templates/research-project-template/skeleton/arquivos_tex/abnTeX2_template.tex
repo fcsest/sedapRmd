@@ -1,0 +1,265 @@
+% ---------------------------------------------------------------------------------------
+% Definição do estilo de documento
+% ---------------------------------------------------------------------------------------
+\documentclass[
+	12pt,       % tamanho da fonte
+  %======================================================================================
+  $if(book_format)$
+  	% Para encadernação %
+    openright, % Capítulos em página ímpar(insere as páginas em branco)
+  	twoside,   % Páginas pares tem a margem direita de 3cm e esquerda de 2cm
+  	%------------------------------------------------------------------------------------
+  $else$
+  	% Para pdf online
+  	oneside,    % Todas páginas tem a margem esquerda de 3cm e direita de 2cm
+  	openany,    % Capítulos independente da página ser par ou ímpar
+  $endif$
+  %======================================================================================
+  % a4paper,	% tamanho do papel.
+	english,	% idioma adicional para hifenização
+	french,		% idioma adicional para hifenização
+	spanish,	% idioma adicional para hifenização
+	brazil,		% o último idioma é o principal do documento
+	]{abntex2}
+% ---------------------------------------------------------------------------------------
+
+% ---------------------------------------------------------------------------------------
+% Pacotes utilizados
+% ---------------------------------------------------------------------------------------
+\usepackage{longtable,booktabs}
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{xcolor}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% Para melhorias de justificação
+\usepackage{color}              % Cores
+\usepackage{fancyvrb}           % Ambientes de código
+\usepackage{mdframed} %nice frames
+\usepackage{float}
+\usepackage{pgffor}
+% ---------------------------------------------------------------------------------------
+
+% ---------------------------------------------------------------------------------------
+% Pacotes de citações
+% ---------------------------------------------------------------------------------------
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+% ---------------------------------------------------------------------------------------
+
+% ---------------------------------------------------------------------------------------
+% Comandos e parâmetros renomeados na configuração de pacotes
+% ---------------------------------------------------------------------------------------
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+
+\definecolor{Function}{HTML}{043C5E}
+\definecolor{Param}{HTML}{10AFF2}
+\definecolor{Comment}{HTML}{6E6E6E}
+\definecolor{Operator}{HTML}{00838f}
+\definecolor{String}{HTML}{009658}
+\definecolor{Value}{HTML}{00ABA2}
+\definecolor{Par}{HTML}{9897C7}
+\definecolor{bg}{HTML}{E8E8E8}
+
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+
+\newcommand{\FunctionTok}[1]{\textcolor{Function}{\textbf{#1}}}
+\newcommand{\ParamTok}[1]{\textcolor{Param}{\textbf{#1}}}
+\newcommand{\CommentTok}[1]{\textcolor{Comment}{\textit{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor{Operator}{#1}}
+\newcommand{\StringTok}[1]{\textcolor{String}{#1}}
+\newcommand{\ValueTok}[1]{\textcolor{Value}{#1}}
+\newcommand{\ParTok}[1]{\textcolor{Par}{#1}}
+\newcommand{\NormalTok}[1]{#1}
+
+\mdfdefinestyle{rcode}
+{
+backgroundcolor=bg,
+roundcorner=10pt,
+innertopmargin=10pt,
+innerbottommargin=10pt,
+innerrightmargin=10pt,
+innerleftmargin=10pt,
+leftmargin = 0.5pt,
+rightmargin = 1pt,
+linewidth=0.5pt
+}
+
+\renewcommand{\arraystretch}{1.5}
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+
+\renewcommand{\imprimircapa}{%
+  \begin{capa}%
+    \center
+    \ABNTEXchapterfont\large\imprimirautor
+
+    \vfill
+    \begin{center}
+    \ABNTEXchapterfont\bfseries\LARGE\imprimirtitulo
+    \end{center}
+    \begin{center}
+    \ABNTEXchapterfont\large{$subtitulo$}
+    \end{center}
+    \vfill
+
+    \large\imprimirlocal
+
+    \large\imprimirdata
+
+    \vspace*{1cm}
+  \end{capa}
+}
+% ---------------------------------------------------------------------------------------
+
+
+% ---------------------------------------------------------------------------------------
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---------------------------------------------------------------------------------------
+\titulo{$titulo$}
+\autor{$autor$}
+\local{$local$}
+\data{$data$}
+\preambulo{$preambulo$}
+% ---------------------------------------------------------------------------------------
+
+
+% ---------------------------------------------------------------------------------------
+% Configurações de aparência do PDF final
+% ---------------------------------------------------------------------------------------
+% Alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% Informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title},
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{projeto de pesquisa},
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% ---------------------------------------------------------------------------------------
+
+% ---------------------------------------------------------------------------------------
+% Espaçamentos entre linhas e parágrafos
+% ---------------------------------------------------------------------------------------
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+% ---------------------------------------------------------------------------------------
+
+% ---------------------------------------------------------------------------------------
+% Compila o indice
+% ---------------------------------------------------------------------------------------
+\makeindex
+% ---------------------------------------------------------------------------------------
+
+% ---------------------------------------------------------------------------------------
+% Início do documento
+% ---------------------------------------------------------------------------------------
+\begin{document}
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing
+
+% ---------------------------------------------------------------------------------------
+% Capa
+% ---------------------------------------------------------------------------------------
+\imprimircapa
+% ---------------------------------------------------------------------------------------
+
+% ---------------------------------------------------------------------------------------
+% Folha de rosto
+% ---------------------------------------------------------------------------------------
+\imprimirfolhaderosto
+% ---------------------------------------------------------------------------------------
+
+% ---------------------------------------------------------------------------------------
+% Inserir lista de ilustrações
+% ---------------------------------------------------------------------------------------
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+% ---
+
+% ---------------------------------------------------------------------------------------
+% Inserir lista de tabelas
+% ---------------------------------------------------------------------------------------
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+% ---------------------------------------------------------------------------------------
+
+% ---------------------------------------------------------------------------------------
+% Inserir lista de abreviaturas e siglas
+% ---------------------------------------------------------------------------------------
+ \begin{siglas}
+  $for(lista-abreviaturas-e-siglas/pairs)$
+    \item[$lista-abreviaturas-e-siglas.key$] $lista-abreviaturas-e-siglas.value$
+  $endfor$
+ \end{siglas}
+% ---------------------------------------------------------------------------------------
+
+% ---------------------------------------------------------------------------------------
+% inserir o sumario
+% ---------------------------------------------------------------------------------------
+\begin{sffamily}
+\noindent\normalsize{\textbf{Resumo}}
+
+\noindent\small{$resumo$}
+
+\noindent\normalsize{\textbf{Palavras-chave: }}\small{$palavras-chave$}
+\end{sffamily}
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---------------------------------------------------------------------------------------
+\textual
+% ---------------------------------------------------------------------------------------
+
+$body$
+
+% ---------------------------------------------------------------------------------------
+% Referências bibliográficas
+% ---------------------------------------------------------------------------------------
+\bibliography{arquivos_tex/references}
+% ---------------------------------------------------------------------------------------
+
+% ---------------------------------------------------------------------------------------
+% INDICE REMISSIVO
+% ---------------------------------------------------------------------------------------
+\phantompart
+\printindex
+% ---------------------------------------------------------------------------------------
+
+\end{document}
