@@ -19,3 +19,5 @@ Imports:
     stringr
 Suggest:
     tinytex
+URL: https://github.com/fcsest/sedapRmd
+BugReports: https://github.com/fcsest/sedapRmd/issues
